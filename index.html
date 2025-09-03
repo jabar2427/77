@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untuk yang Tersayang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffe8e8 0%, #f8f4ff 50%, #e6f0ff 100%);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .heart {
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 2s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        .message-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .message-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .love-letter {
+            background: rgba(255, 255, 255, 0.95);
+            border-left: 4px solid #ff6b6b;
+        }
+        
+        /* New Greeting Animation Styles */
+        .greeting-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 50%, #ff6b6b 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 1;
+            transition: opacity 1s ease-out;
+        }
+        
+        .greeting-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .greeting-text {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            animation: slideUp 1.5s ease-out forwards;
+        }
+        
+        .greeting-subtext {
+            font-size: 1.5rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: slideUp 1.5s ease-out 0.5s forwards;
+        }
+        
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .greeting-hearts {
+            margin-top: 2rem;
+        }
+        
+        .greeting-heart {
+            display: inline-block;
+            font-size: 2rem;
+            margin: 0 0.5rem;
+            opacity: 0;
+            animation: heartPop 0.8s ease-out forwards;
+        }
+        
+        .greeting-heart:nth-child(1) { animation-delay: 1s; }
+        .greeting-heart:nth-child(2) { animation-delay: 1.2s; }
+        .greeting-heart:nth-child(3) { animation-delay: 1.4s; }
+        .greeting-heart:nth-child(4) { animation-delay: 1.6s; }
+        .greeting-heart:nth-child(5) { animation-delay: 1.8s; }
+        
+        @keyframes heartPop {
+            0% {
+                opacity: 0;
+                transform: scale(0) rotate(0deg);
+            }
+            50% {
+                transform: scale(1.2) rotate(10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        .td{
+            text-align: center;
+            font-size: 2rem;
+            margin: 0 0.5rem;
+            opacity: 0;
+            animation: heartPop 0.8s ease-out forwards;
+        }
+        
+        .main-content {
+            opacity: 0;
+            transition: opacity 1s ease-in;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col items-center justify-center p-4">
+    <!-- Greeting Overlay -->
+    <div class="greeting-overlay" id="greetingOverlay">
+        <div class="greeting-content">
+            <div class="greeting-text playfair">Halo Cantik</div>
+            <div class="greeting-subtext">Siap untuk kejutan spesial?</div>
+            <div class="greeting-hearts">
+                <span class="greeting-heart">❤️</span>
+                <span class="greeting-heart">💕</span>
+                <span class="greeting-heart">✨</span>
+                <span class="greeting-heart">🌹</span>
+                <span class="greeting-heart">🥰</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content" id="mainContent">
+        <!-- Hero Section -->
+        <div class="text-center mb-12 fade-in">
+            <div class="heart text-6xl mb-4">❤️</div>
+            <h1 class="playfair text-4xl md:text-6xl font-bold text-pink-600 mb-4">
+                Untuk mantanku Yang Tersayang
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-700">
+                Setiap detik bersamamu adalah anugerah
+            </p>
+        </div>
+
+        <!-- Photo Section -->
+        <div class="mb-12 w-full max-w-4xl mx-auto">
+            <div class="bg-white rounded-3xl shadow-xl p-6">
+                <div class="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden">
+                    <img 
+                        src="love.jpg" 
+                        alt="Pasangan berpelukan di pantai saat senja dengan siluet matahari terbenam dan ombak yang tenang"
+                        class="w-full h-full object-cover rounded-2xl"
+                        onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYwMCIgaGVpZ2h0PSI5MDAiIHZpZXdCb3g9IjAgMCAxNjAwIDkwMCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjE2MDAiIGhlaWdodD0iOTAwIiBmaWxsPSIjRkY2QjZCIi8+Cjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBkb21pbmFudC1iYXNlbGluZT0ibWlkZGxlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMjQiIGZpbGw9IndoaXRlIj5QYXNhbmdhbiBIYXJtb25pczwvdGV4dD4KPC9zdmc+'"
+                    >
+                </div>
+                <div class="text-center mt-4">
+                    <p class="text-gray-600 italic">"Love You "</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Love Messages -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12 w-full max-w-6xl mx-auto">
+            <!-- Message 1 -->
+            <div class="message-card bg-white rounded-2xl p-6 shadow-lg">
+                <div class="text-3xl text-pink-500 mb-4">💖</div>
+                <h3 class="playfair text-xl font-bold text-gray-800 mb-3">Terima Kasih</h3>
+                <p class="text-gray-600">Terima kasih sudah menjadi bagian dari hidupku. Kehadiranmu membuat segalanya lebih berarti.</p>
+            </div>
+
+            <!-- Message 2 -->
+            <div class="message-card bg-white rounded-2xl p-6 shadow-lg">
+                <div class="text-3xl text-pink-500 mb-4">✨</div>
+                <h3 class="playfair text-xl font-bold text-gray-800 mb-3">Kebahagiaan</h3>
+                <p class="text-gray-600">Senyummu adalah sumber kebahagiaanku. Semoga aku selalu bisa membuatmu tersenyum.</p>
+            </div>
+
+            <!-- Message 3 -->
+            <div class="message-card bg-white rounded-2xl p-6 shadow-lg">
+                <div class="text-3xl text-pink-500 mb-4">🌹</div>
+                <h3 class="playfair text-xl font-bold text-gray-800 mb-3">Cinta</h3>
+                <p class="text-gray-600">Cintaku padamu tumbuh lebih kuat setiap hari. Kamu adalah impian yang menjadi kenyataan.</p>
+            </div>
+        </div>
+
+        <!-- Love Letter -->
+        <div class="love-letter rounded-3xl p-8 md:p-12 mb-12 w-full max-w-4xl mx-auto">
+            <h2 class="playfair text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
+                Surat Cinta Untukmu
+            </h2>
+            <div class="text-lg text-gray-700 leading-relaxed space-y-4">
+             <div class="text-lg text-gray-700 text-center space-y-4">
+                <p>Mantanku Sayangku,</p>
+                <p>Tidak ada kata-kata yang cukup untuk menggambarkan betapa berartinya kamu bagiku. Setiap hari bersamamu adalah hadiah yang tak ternilai.</p>
+                <p>Kamu membuatku menjadi pribadi yang lebih baik, mengajariku tentang cinta yang tulus, dan menunjukkan arti kebahagiaan yang sesungguhnya.</p>
+                <p>Terima kasih sudah menerima aku apa adanya, dengan segala kelebihan dan kekuranganku.</p>
+                <p>Aku berjanji akan selalu ada untukmu, dalam suka dan duka, dalam senyum dan air mata.</p>
+                <p class="font-bold">Selamanya milikmu,</p>
+                <p class="playfair text-xl text-pink-600">Yang selalu mencintaimu</p>
+            </div>
+            </div>
+        </div>
+
+        <!-- Memory Gallery -->
+         <div class="love-letter rounded-3xl p-8 md:p-12 mb-12 w-full max-w-4xl mx-auto">
+         <div class="mb-12 w-full max-w-6xl mx-auto">
+            <h2 class="playfair text-3xl font-bold text-center text-gray-800 mb-8">Puisi Tentang
+            </h2>
+            <h2 class="playfair text-3xl font-bold text-center text-gray-800 mb-8">Aku Mantan Kamu Yang Dulu
+            </h2>
+             <div class="text-lg text-gray-700 text-center space-y-4">
+                <p>Pernah kau jadi langit di mataku,</p>
+                <p>tempat segala rindu mengapung tanpa ragu.</p>
+                <p>Kita pernah serupa lagu,</p>
+                <p>harmoni yang tak sempat jadi lagu utuh.</p>
+
+                <p>Langkahmu kini bukan untukku,</p>
+                <p>tapi bayangmu tetap enggan berlalu.</p>
+                <p>Ada tawa yang masih tinggal di antara sepi,</p>
+                <p>ada luka yang tak mau pergi,</p>
+                <p>tapi aku menyimpannya,</p>
+                <p>seperti puisi—</p>
+                <p>yang indah justru karena perih.</p>
+
+                <p>Kau bukan penyesalan,</p>
+                <p>hanya kenangan yang terlalu manis untuk dilupakan.</p>
+                <p>Bukan ingin kembali,</p>
+                <p>hanya tak bisa pura-pura tak pernah terjadi.</p>
+
+                <p>Terima kasih telah jadi pelajaran,</p>
+                <p>dan sempat jadi tujuan.</p>
+                <p>Kini, meski jalan kita tak lagi sama,</p>
+                <p>namamu tetap kudengar…</p>
+                <p> di dalam diam,</p>
+                <p>dalam doa yang tak bernama.</p>
+            </div>
+         </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="aspect-square rounded-2xl overflow-hidden">
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Love Meter -->
+        <div class="bg-white rounded-3xl p-8 shadow-xl mb-12 w-full max-w-md mx-auto">
+            <h2 class="playfair text-2xl font-bold text-center text-gray-800 mb-6">Seberapa Besar Cintaku?</h2>
+            <div class="text-center">
+                <button onclick="showLoveMeter()" class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition duration-300">
+                    Klik di Sini!
+                </button>
+                <div id="loveMeter" class="mt-6 hidden">
+                    <div class="text-6xl text-pink-500 mb-4">∞</div>
+                    <p class="text-xl text-gray-700">Cintaku padamu tak terhingga dan abadi!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final Message -->
+        <div class="text-center mb-12">
+            <div class="floating text-4xl mb-4">💕</div>
+            <p class="playfair text-2xl md:text-3xl text-gray-800 mb-4">
+                Aku mencintaimu hari ini, besok, dan selamanya
+            </p>
+            <p class="text-lg text-gray-600">
+                Terima kasih sudah menjadi milikku
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Greeting Animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const greetingOverlay = document.getElementById('greetingOverlay');
+            const mainContent = document.getElementById('mainContent');
+            
+            // Show greeting for 4 seconds, then fade to main content
+            setTimeout(() => {
+                greetingOverlay.style.opacity = '0';
+                setTimeout(() => {
+                    greetingOverlay.style.display = 'none';
+                    mainContent.style.opacity = '1';
+                }, 1000);
+            }, 4000);
+        });
+
+        function showLoveMeter() {
+            const loveMeter = document.getElementById('loveMeter');
+            loveMeter.classList.remove('hidden');
+            loveMeter.classList.add('fade-in');
+            
+            // Play a sweet sound
+            const audio = new Audio('data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF5fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/DBfDsKIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C/fD8KIHfH7N2QQAoUX7Dn6aVUFA5LpODrtmMcBziR1/C');
+            audio.volume = 0.3;
+            audio.play().catch(() => {});
+        }
+
+        // Add floating hearts animation
+        function createFloatingHeart() {
+            const heart = document.createElement('div');
+            heart.innerHTML = '❤️';
+            heart.className = 'text-2xl absolute opacity-70';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animation = `float ${6 + Math.random() * 4}s ease-in-out infinite`;
+            heart.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => {
+                heart.remove();
+            }, 10000);
+        }
+
+        // Create floating hearts periodically
+        setInterval(createFloatingHeart, 800);
+
+        // Initial floating hearts
+        for (let i = 0; i < 5; i++) {
+            setTimeout(createFloatingHeart, i * 200);
+        }
+    </script>
+   <audio controls autoplay>
+  <source src="DJ CLBK - CINTAKU PADAMU BERSEMI KEMBALI SLOW TIKTOK VIRAL FULL SONG MAMAN FVNDY 2025.mp3" type="audio/mpeg">
+  Maaf, browser Anda tidak mendukung pemutaran audio.
+</audio>
+</body>
+</html>
+
